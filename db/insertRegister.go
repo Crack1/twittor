@@ -2,10 +2,10 @@ package db
 
 import (
 	"context"
+	"time"
+
 	"github.com/Crack1/twittor/models"
 	"go.mongodb.org/mongo-driver/bson/primitive"
-	"go.mongodb.org/mongo-driver/mongo"
-	"time"
 )
 
 /* InsertRegister  */
@@ -16,13 +16,13 @@ func InsertRegister(u models.Usuario) (string, bool, error) {
 	db := MongoCN.Database("golang-api")
 	col := db.Collection("usuarios")
 
-	u.Password, _ := PasswordEncrypt(u.Password)
+	u.Password, _ = PasswordEncrypt(u.Password)
 
 	result, err := col.InsertOne(ctx, u)
-	if err != nil{
-		return "",false,  err
+	if err != nil {
+		return "", false, err
 	}
 
-	ObjID, _ := result.InsertedID(primitive.ObjectID)
+	ObjID, _ := result.InsertedID.(primitive.ObjectID)
 	return ObjID.String(), true, nil
 }
