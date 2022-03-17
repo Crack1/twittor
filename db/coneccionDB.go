@@ -11,7 +11,7 @@ import (
 /* MongoC is the conection object to DB */
 var MongoCN = ConnectDB()
 
-var clientOptions = options.Client().ApplyURI("mongodb+srv://dbusers:dbuser1983@cluster0.x9vms.mongodb.net/golang-api?retryWrites=true&w=majority")
+var clientOptions = options.Client().ApplyURI("mongodb+srv://dbusers:dbuser1983@cluster0.x9vms.mongodb.net/twitter-golang?retryWrites=true&w=majority")
 
 /* ConnectDB allow DB conextion*/
 func ConnectDB() *mongo.Client {
