@@ -19,7 +19,7 @@ func Drivers() {
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
-		PORT = "8080"
+		PORT = "3000"
 	}
 
 	handler := cors.AllowAll().Handler(router)
