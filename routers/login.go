@@ -2,6 +2,7 @@ package routers
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/Crack1/twittor/db"
 	"github.com/Crack1/twittor/jwt"
 	"github.com/Crack1/twittor/models"
@@ -30,6 +31,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	fmt.Println(documento)
 	jwtKey, err := jwt.GeneroJWT(documento)
 	if err != nil {
 		http.Error(w, "Ocurrio un error al intentar generar el token Correspondiente"+err.Error(), 400)
